@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>JS FEE CALCULATOR</title>
+	<link rel="stylesheet"href="mdb/css/bootstrap.css">
+	<link rel="stylesheet"href="mdb/css/mdb.css">
+     <style>
+       #select
+       {
+        width: 190px;
+        height: 30px;
+       }
+     </style>
+</head>
+<body>
+     <div class="container mt-5">
+     	<div class="row">
+     		<div class="col-md-8">
+          <div class="table-responsive">
+     			<div class="card-header text-center text-white bg-primary">
+     				<h3 class="card-title">
+     					JS FEE CALCULATOR
+     				</h3>
+     			</div>
+     			<div class="card-body bg-light text-center">
+     				<div class="row">
+     					<div class="col col-md-12">
+     						<form>
+     							<label>Course</label>
+     							<select id="select">
+     						    <option>select course..</option>
+     							<option value="java">JAVA</option>
+     							<option value="html">HTML</option>
+     							<option value="sql">SQL</option>
+     						</select>
+     						</form>
+     					</div>
+     					<div class=" col-md-12">
+                                <label>Total Fee</label> 
+                                <input type="text" id="amount" readonly="value"> 
+                              </div>
+                              <div class="col-md-12">
+                                   <div>
+                                        <label>Cast:-  </label>
+                                        <input type="radio" name="oc1" id="oc">OC
+                                        <input type="radio" name="oc1" id="bc">BC
+                                        <input type="radio" name="oc1" id="sc">SC
+                                        <input type="radio" name="oc1" id="st">ST
+                                   </div>
+                              </div>
+                              <div class="col-md-12">
+                                   <div>
+                                       <label> Cons Fee</label>
+                                       <input type="text" name="con-fee" id="con-fee" readonly="">
+                                   </div>
+                              </div>
+                              <div class="col-md-12">
+                                   <div>
+                                       <label> Paid Fee</label>
+                                       <input type="text" name="paid-fee" id="paid-fee">
+                                   </div>
+                              </div>
+                              <div class="col-md-12">
+                                   <div>
+                                       <label> Due Fee</label>
+                                       <input type="text" name="due-fee" id="due-fee" readonly="">
+                                   </div>
+                              </div>
+                              <div class="col-md-12">
+                                   <div class="btn btn-success" id="cal-btn">
+                                        Calculate
+                                   </div>
+                              </div>
+                             
+     				</div>
+
+     			</div>
+           <div class="card-footer text-center bg-danger">
+                                <h4>Created By @ <br>M Hari Kumar</h4>
+                              </div>
+     		</div>
+     	</div>
+     </div>
+     	
+     </div>
+<script>
+
+          let Paid;
+          let total;
+          let cons;
+  let selectBox=document.querySelector("#select");
+  selectBox.addEventListener('change',function()
+  {
+    let selected=selectBox.value;
+    if(selected==='java')
+    {
+       let fee=document.querySelector('#amount');
+      fee.value=30000;
+      total=fee.value;
+
+    }
+    if(selected==='html')
+    {
+       let fee=document.querySelector('#amount');
+      fee.value=10000;
+      total=fee.value;
+    }
+    if(selected==='sql')
+    {
+       let fee=document.querySelector('#amount');
+      fee.value=25000;
+      total=fee.value;
+    }
+  })
+
+  let ocBtn=document.querySelector('#oc')
+  ocBtn.addEventListener('click',function()
+  {
+    let con=document.querySelector('#con-fee');
+    con.value=500;
+    cons=con.value;
+  })
+  let bcBtn=document.querySelector('#bc')
+  bcBtn.addEventListener('click',function()
+  {
+    let con=document.querySelector('#con-fee');
+    con.value=800;
+    cons=con.value;
+  })
+  let scBtn=document.querySelector('#sc')
+  scBtn.addEventListener('click',function()
+  {
+    let con=document.querySelector('#con-fee');
+    con.value=1000;
+    cons=con.value;
+  })
+  let stBtn=document.querySelector('#st')
+  stBtn.addEventListener('click',function()
+  {
+    let con=document.querySelector('#con-fee');
+    con.value=1000;
+    cons=con.value;
+  })
+
+  let input2=document.querySelector('#paid-fee');
+input2.addEventListener('keyup',function()
+{
+       var b1=input2.value;
+       console.log(b1)
+       paid=parseInt(b1);
+});
+
+var calBtn=document.querySelector('#cal-btn');
+    calBtn.addEventListener('click',function()
+    {
+      let n=total-cons-paid;
+      let due=document.querySelector('#due-fee');
+          due.value=n;
+    })
+
+</script>
+</body>
+</html>
